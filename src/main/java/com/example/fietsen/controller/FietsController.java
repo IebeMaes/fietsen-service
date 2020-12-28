@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
@@ -14,17 +15,17 @@ public class FietsController {
     @Autowired
     private FietsRepository fietsRepository;
 
-//    @PostConstruct
-//    public void fillDB(){
-//        if(fietsRepository.count()==0){
-//            fietsRepository.save(new Fiets("Norta", "N125", 130, 150, 2));
-//            fietsRepository.save(new Fiets("Batavus", "qsdf64", 20, 600, 20));
-//            fietsRepository.save(new Fiets("Apple", "Ifiets2", 15, 3600, 10));
-//            fietsRepository.save(new Fiets("Samsung", "bike S12 fold", 90, 2000, 30));
-//        }
-//        System.out.println("fiets test: " + fietsRepository.findAll());
-//        System.out.println("merk test: " + fietsRepository.findFietsByMerk("Norta"));
-//    }
+    @PostConstruct
+    public void fillDB(){
+        if(fietsRepository.count()==0){
+            fietsRepository.save(new Fiets("Norta", "N125", 130, 150, 2));
+            fietsRepository.save(new Fiets("Batavus", "qsdf64", 20, 600, 20));
+            fietsRepository.save(new Fiets("Apple", "Ifiets2", 15, 3600, 10));
+            fietsRepository.save(new Fiets("Samsung", "bike S12 fold", 90, 2000, 30));
+        }
+        System.out.println("fiets test: " + fietsRepository.findAll());
+        System.out.println("merk test: " + fietsRepository.findFietsByMerk("Norta"));
+    }
 
     @GetMapping("/fietsen")
     public List<Fiets> getFietsen() {
