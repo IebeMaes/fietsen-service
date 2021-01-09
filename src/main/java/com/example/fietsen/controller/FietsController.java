@@ -42,6 +42,11 @@ public class FietsController {
         return fietsRepository.findFietsByMerkAndModel(merk, model);
     }
 
+    @GetMapping("/fietsen/model/{model}")
+    public Fiets getFietsByModel(@PathVariable String model) {
+        return fietsRepository.findFietsByModel(model);
+    }
+
     @PostMapping("/fietsen")
     public Fiets addFiets(@RequestBody Fiets fiets) {
         fietsRepository.save(fiets);

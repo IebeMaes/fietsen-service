@@ -11,4 +11,6 @@ public interface FietsRepository extends MongoRepository<Fiets, String> {
     List<Fiets> findFietsByMerk(String merk);
 
     Fiets findFietsByMerkAndModel(String merk, String model);
+
+    Fiets findFietsByModel(String model);
 }
